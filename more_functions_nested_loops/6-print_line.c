@@ -9,14 +9,14 @@ void print_line(int n)
 	int i;
 	if (n <= 0)
 	{
-		_putchar('\n');  /* Print only a newline if n is 0 or negative */
+		_putchar('\n');
 	}
 	else
 	{
 		for (i = 0; i < n; i++)
 		{
-			_putchar('_');  /* Print _ n times */
+			_putchar('_');
 		}
-		_putchar('\n');  /* Print newline at the end */
+		_putchar('\n');
 	}
 }
