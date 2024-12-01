@@ -1,34 +1,34 @@
 #include "main.h"
 
-/* Prototype for the helper function */
-int _sqrt_helper(int n, int i);
-
 /**
  * _sqrt_recursion - Returns the natural square root of a number
- * @n: The number whose square root is to be calculated
+ * @n: The number to find the square root of
  *
- * Return: The natural square root of n, or -1 if n has no natural square root
+ * Return: The square root of the number or -1 if not found
  */
 int _sqrt_recursion(int n)
 {
-    return (_sqrt_helper(n, 1));
+	if (n < 0)  /* Negative numbers don't have square roots */
+		return (-1);
+
+	return (_sqrt_helper(n, 1));  /* Start with 1 and check for square root */
 }
 
 /**
  * _sqrt_helper - Helper function to find the square root recursively
- * @n: The number whose square root is being calculated
- * @i: The current number to check if i * i == n
+ * @n: The number to find the square root of
+ * @i: The current guess for the square root
  *
- * Return: The square root of n, or -1 if no natural square root exists
+ * Return: The square root of the number or -1 if not found
  */
 int _sqrt_helper(int n, int i)
 {
-    if (i * i > n) /* If i squared is greater than n, return -1 */
-        return (-1);
+	if (i * i > n)  /* If i squared is greater than n, no square root exists */
+		return (-1);
 
-    if (i * i == n) /* If i squared equals n, return i */
-        return (i);
+	if (i * i == n)  /* If i squared equals n, we've found the square root */
+		return (i);
 
-    return (_sqrt_helper(n, i + 1)); /* Recurse with i incremented */
+	return (_sqrt_helper(n, i + 1));  /* Try the next guess */
 }
 
