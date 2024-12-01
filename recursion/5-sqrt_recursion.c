@@ -8,10 +8,10 @@
  */
 int _sqrt_recursion(int n)
 {
-	if (n < 0)  /* Negative numbers don't have square roots */
-		return (-1);
+    if (n < 0)  /* Negative numbers don't have square roots */
+        return (-1);
 
-	return (_sqrt_helper(n, 1));  /* Start with 1 and check for square root */
+    return (_sqrt_helper(n, 1));  /* Start with 1 and check for square root */
 }
 
 /**
@@ -23,12 +23,12 @@ int _sqrt_recursion(int n)
  */
 int _sqrt_helper(int n, int i)
 {
-	if (i * i > n)  /* If i squared is greater than n, no square root exists */
-		return (-1);
+    if (i * i > n)  /* If i squared is greater than n, no square root exists */
+        return (-1);
 
-	if (i * i == n)  /* If i squared equals n, we've found the square root */
-		return (i);
+    if (i * i == n)  /* If i squared equals n, we've found the square root */
+        return (i);
 
-	return (_sqrt_helper(n, i + 1));  /* Try the next guess */
+    return (_sqrt_helper(n, i + 1));  /* Try the next guess */
 }
 
