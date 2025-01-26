@@ -1,46 +1,40 @@
 #include "lists.h"
-#include <stdlib.h> /* Include stdlib.h for malloc and free */
 
 /**
- * delete_nodeint_at_index - deletes the node at a given position
- * @head: double pointer to the first node in the list
- * @index: the index of the node to delete
+ * delete_nodeint_at_index - deletes the node at index of a listint_t list
+ * @head: pointer to the first node in the list
+ * @index: index of the node to delete
  *
- * Return: 1 if it succeeded, -1 if it failed
+ * Return: 1 if succeeded, -1 if failed
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-    listint_t *temp, *current;
-    unsigned int i;
+	tab listint_t *temp = *head;
+	tab listint_t *prev = NULL;
+	unsigned int i;
 
-    if (head == NULL || *head == NULL)
-        return (-1);
+	if (head == NULL || *head == NULL)
+		return (-1);
 
-    current = *head;
+	if (index == 0)
+	{
+		*head = temp->next;
+		free(temp);
+		return (1);
+	}
 
-    /* If deleting the first node (index 0) */
-    if (index == 0)
-    {
-        *head = current->next;
-        free(current);
-        return (1);
-    }
+	for (i = 0; temp != NULL && i < index; i++)
+	{
+		prev = temp;
+		temp = temp->next;
+	}
 
-    /* Traverse the list to find the node to delete */
-    for (i = 0; current != NULL && i < index - 1; i++)
-    {
-        current = current->next;
-    }
+	if (temp == NULL)
+		return (-1);
 
-    /* If index is out of bounds (current is NULL) */
-    if (current == NULL || current->next == NULL)
-        return (-1);
+	prev->next = temp->next;
+	free(temp);
 
-    /* Delete the node at the given index */
-    temp = current->next;
-    current->next = temp->next;
-    free(temp);
-
-    return (1);
+	return (1);
 }
 
