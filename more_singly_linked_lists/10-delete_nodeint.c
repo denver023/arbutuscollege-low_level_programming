@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdlib.h>  /* Include the correct header for malloc and free */
 
 /**
  * delete_nodeint_at_index - deletes the node at index of a listint_t list
@@ -9,32 +10,32 @@
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	tab listint_t *temp = *head;
-	tab listint_t *prev = NULL;
-	unsigned int i;
+    listint_t *temp = *head;
+    listint_t *prev = NULL;
+    unsigned int i;
 
-	if (head == NULL || *head == NULL)
-		return (-1);
+    if (head == NULL || *head == NULL)
+        return (-1);
 
-	if (index == 0)
-	{
-		*head = temp->next;
-		free(temp);
-		return (1);
-	}
+    if (index == 0)
+    {
+        *head = temp->next;
+        free(temp);
+        return (1);
+    }
 
-	for (i = 0; temp != NULL && i < index; i++)
-	{
-		prev = temp;
-		temp = temp->next;
-	}
+    for (i = 0; temp != NULL && i < index; i++)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
 
-	if (temp == NULL)
-		return (-1);
+    if (temp == NULL)
+        return (-1);
 
-	prev->next = temp->next;
-	free(temp);
+    prev->next = temp->next;
+    free(temp);
 
-	return (1);
+    return (1);
 }
 
