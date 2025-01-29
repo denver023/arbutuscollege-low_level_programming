@@ -9,23 +9,18 @@
  */
 int linear_search(int *array, size_t size, int value)
 {
-    size_t i;
+	size_t i;
 
-    /* Check if array is NULL */
-    if (array == NULL)
-        return (-1);
+	if (array == NULL)
+		return (-1);
 
-    /* Iterate through array */
-    for (i = 0; i < size; i++)
-    {
-        /* Print the value being checked */
-        printf("Value checked array[%lu] = [%d]\n", i, array[i]);
+	for (i = 0; i < size; i++)
+	{
+		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
 
-        /* If value is found, return its index */
-        if (array[i] == value)
-            return (i);
-    }
+		if (array[i] == value)
+			return (i);
+	}
 
-    /* Value not found in array */
-    return (-1);
+	return (-1);
 }
